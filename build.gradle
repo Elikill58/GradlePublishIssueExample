@@ -1,0 +1,35 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+plugins {
+    id 'java-library'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+}
+repositories {
+    maven {
+        name = "github"
+        url = uri("https://maven.pkg.github.com/Elikill58/GradlePublishIssue")
+        credentials(HttpHeaderCredentials);
+        authentication {
+            header(HttpHeaderAuthentication)
+        }
+    }
+}
+
+dependencies {
+    compileOnly 'com.elikill58:gradlepublishissue:1.0-SNAPSHOT'
+}
+
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+
+archivesBaseName = 'GradlePublishIssueExample'
+
+sourceSets.main {
+    java.srcDirs = ['src']
+    resources.srcDirs = ['resources']
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+shadowJar {
+    archiveFileName = "GradlePublishIssueExample.jar"
+}
