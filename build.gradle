@@ -19,7 +19,7 @@ dependencies {
     compileOnly 'com.elikill58:gradlepublishissue:1.0-SNAPSHOT'
 }
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 
 archivesBaseName = 'GradlePublishIssueExample'
 
